@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<HTML>
+<HEAD>
+
+<script src="https://www.gstatic.com/firebasejs/5.7.3/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDPQcoy-o8haHsSskx8uG4qSZiyK7T4SdM",
+    authDomain: "animalloverz.firebaseapp.com",
+    databaseURL: "https://animalloverz.firebaseio.com",
+    projectId: "animalloverz",
+    storageBucket: "animalloverz.appspot.com",
+    messagingSenderId: "533567092345"
+  };
+  firebase.initializeApp(config);
+</script>
+</HEAD>
+<BODY>
+	<input type="button" value="write" onclick="fireStorage()">
+	<span id="linkbox">msg</span> <br>
+	
+	<script>
+		console.log("start");
+		
+		function writeUserData(userId, name, email, imageUrl) {
+		  firebase.database().ref('files/'+userId).set({
+			username: name,
+			email: email,
+			profile_picture : imageUrl
+		  });
+		}
+		
+		function fireStorage(){
+			console.log("fireStorage");
+			var auth = firebase.auth();
+			
+			writeUserData("taset","nametx","emailurl","imgurl");
+			
+			
+		}
+	
+	
+	</script>
+</BODY>
+
+</HTML>
+
+
+
+
+

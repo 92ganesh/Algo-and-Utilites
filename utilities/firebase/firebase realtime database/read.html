@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<HTML>
+<HEAD>
+
+<script src="https://www.gstatic.com/firebasejs/5.7.3/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDPQcoy-o8haHsSskx8uG4qSZiyK7T4SdM",
+    authDomain: "animalloverz.firebaseapp.com",
+    databaseURL: "https://animalloverz.firebaseio.com",
+    projectId: "animalloverz",
+    storageBucket: "animalloverz.appspot.com",
+    messagingSenderId: "533567092345"
+  };
+  firebase.initializeApp(config);
+</script>
+</HEAD>
+<BODY>
+	<input type="button" value="readAll" onclick="fireStorage()">
+	<span id="linkbox">msg</span> <br>
+	
+	<script>
+		console.log("start");
+		
+		function fireStorage(){
+			console.log("fireStorage");
+			var auth = firebase.auth();
+			var imgRef=firebase.database().ref();
+			imgRef.on('value', function(snapshot) {
+				if(snapshot.val()!=null)
+					console.log(snapshot.val());
+				else
+					console.log("file not found");
+			});
+			
+			
+		}
+	
+	
+	</script>
+</BODY>
+
+</HTML>
+
+
+
+
+

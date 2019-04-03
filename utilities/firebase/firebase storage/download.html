@@ -1,0 +1,88 @@
+<!DOCTYPE HTML>
+<HTML>
+<HEAD>
+
+<script src="https://www.gstatic.com/firebasejs/5.7.3/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDPQcoy-o8haHsSskx8uG4qSZiyK7T4SdM",
+    authDomain: "animalloverz.firebaseapp.com",
+    databaseURL: "https://animalloverz.firebaseio.com",
+    projectId: "animalloverz",
+    storageBucket: "animalloverz.appspot.com",
+    messagingSenderId: "533567092345"
+  };
+  firebase.initializeApp(config);
+</script>
+</HEAD>
+<BODY>
+	<input type="button" value="download" onclick="fireStorage()">
+	<span id="linkbox">dfg</span> <br>
+	<br>
+	<p id="downloaded"> hj</p>
+	
+	
+	
+	<script>
+		console.log("start");
+		
+		 function downloadURI(uri, name) {
+				  var link = document.createElement("a");
+				  link.download = name;
+				  link.href = uri;
+				  document.body.appendChild(link);
+				  link.click();
+				  document.body.removeChild(link);
+				  delete link;
+			  }
+		
+		function fireStorage(){
+			console.log("fireStorage");
+			var auth = firebase.auth();
+			var storageRef = firebase.storage().ref();
+		
+			var starsRef = storageRef.child('rec.txt');
+
+			// Get the download URL
+			starsRef.getDownloadURL().then(function(url) {
+			  // Insert url into an <img> tag to "download"
+			  console.log("url : "+url);
+			  document.getElementById("downloaded").innerHTML =  "<img alt='online' src='"+url+"'>";
+			  downloadURI(url,"file.jpg");
+			 
+			}).catch(function(error) {
+
+			  // A full list of error codes is available at
+			  // https://firebase.google.com/docs/storage/web/handle-errors
+			  switch (error.code) {
+				case 'storage/object-not-found':
+				  // File doesn't exist
+				  break;
+
+				case 'storage/unauthorized':
+				  // User doesn't have permission to access the object
+				  break;
+
+				case 'storage/canceled':
+				  // User canceled the upload
+				  break;
+
+				case 'storage/unknown':
+				  // Unknown error occurred, inspect the server response
+				  break;
+			  }
+			});
+			
+		}
+	
+	
+	</script>
+</BODY>
+
+</HTML>
+
+
+
+
+
