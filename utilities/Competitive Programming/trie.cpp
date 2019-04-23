@@ -53,7 +53,7 @@ void trav(char *s, long long l,long long r){
 
 int main() {
 	char str[] = "hello";
-    char str2[] = "hello";
+	char str2[] = "hello";
 
 	// how to use:- 
 	long long l=0,r=strlen(str)-1;
