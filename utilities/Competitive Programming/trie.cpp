@@ -5,7 +5,7 @@ using namespace std;
 
 /*****************************************
 *   Trie data structure from codechef user 'cheng2014'
-*   However it is bit modified according to generalize
+*   However it is modified to generalize
 *   It is available at https://www.codechef.com/viewsolution/13476683
 ******************************************/
 #define TRIE_SIZE 422222
