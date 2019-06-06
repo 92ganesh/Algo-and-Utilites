@@ -170,6 +170,23 @@ public class Helper {
         }
         return result;
     }
+
+    // fast exponentiation
+    static long MOD;
+    static long exp(long a, long b) {
+        if(b==0)
+            return 1;
+        long temp = exp(a, b/2);
+        if(b%2!=0)
+            return ((temp * temp) % MOD * a) % MOD;
+        else
+            return (temp * temp) % MOD;
+    }
+
+    // modular inverse fast exponentiation
+    static long modular_inverse(long n) {
+        return exp(n, MOD-2);
+    }
 }
 
 /*
@@ -180,4 +197,6 @@ public class Helper {
 58  - MultiSet
 120 - MergerSort
 154 - Large Multiplication
+174 - fast exponentiation
+186 - modular inverse fast exponentiation
 */
