@@ -51,12 +51,16 @@ class SegmentTree{
         treeToArryIndex=new HashMap<>();
         build();
     }
-
     SegmentTree(long[] a){
         arr = a;
-        this.MOD = Integer.MAX_VALUE;
+        this.MOD = Long.MAX_VALUE;
         treeToArryIndex=new HashMap<>();
         build();
+    }
+
+    // what to store in the nodes
+    private long segFunc(long a,long b){
+        return (a+b)%MOD;
     }
 
     private long[] build(){
@@ -78,7 +82,7 @@ class SegmentTree{
             int rchild = lchild+1;
             recurr(left, mid, lchild);
             recurr(mid + 1, right, rchild);
-            segTree[ind] = (segTree[lchild]+segTree[rchild])%MOD;
+            segTree[ind] = segFunc(segTree[lchild],segTree[rchild]);
         }
     }
 
@@ -110,7 +114,7 @@ class SegmentTree{
                     sum2 = query(mid+1, right, mid+1, qright, rchild);
                 }
             }
-            return (sum1+sum2)%MOD;
+            return segFunc(sum1,sum2);
         }
     }
 }
