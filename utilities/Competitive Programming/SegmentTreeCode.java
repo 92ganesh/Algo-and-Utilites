@@ -17,10 +17,9 @@ public class SegmentTreeCode {
             br = new BufferedReader(ir);
         }
 
-        int arr[] = new int[]{1, 2 ,3, -2, 3};
-        SegmentTree seg = new SegmentTree(arr,MOD);
+        long arr[] = new long[]{1, 2 ,3, -2, 3};
+        SegmentTree seg = new SegmentTree(arr);
 
-        int[] sega = seg.build();
 //        int level=1,lcount=0;
 //        for(int i=1;i<15;i++){
 //            System.out.print(sega[i]+" ");
@@ -33,7 +32,7 @@ public class SegmentTreeCode {
 //        }
 //        System.out.println();
 
-        System.out.println(seg.query(0,4,2,4,1));
+        System.out.println(seg.query(3,4));
         System.out.println("end ");
 
     }
@@ -41,23 +40,31 @@ public class SegmentTreeCode {
 
 
 class SegmentTree{
-    private int[] segTree;
-    private  int[] arr;
-    private int MOD;
+    private long[] segTree;
+    private  long[] arr;
+    private long MOD;
     HashMap<Integer,Integer> treeToArryIndex;
 
-    SegmentTree(int[] a, int MOD){
+    SegmentTree(long[] a, long MOD){
         arr = a;
         this.MOD = MOD;
         treeToArryIndex=new HashMap<>();
+        build();
     }
 
-    int[] build(){
+    SegmentTree(long[] a){
+        arr = a;
+        this.MOD = Integer.MAX_VALUE;
+        treeToArryIndex=new HashMap<>();
+        build();
+    }
+
+    private long[] build(){
         //Height of segment tree
-        int x = (int) (Math.ceil(Math.log(arr.length) / Math.log(2)));
+        long x = (long) (Math.ceil(Math.log(arr.length) / Math.log(2)));
         //Maximum size of segment tree
         int max_size =  (1<<(x+1)) - 1;  //2 * (int) Math.pow(2, x) - 1;
-        segTree = new int[max_size];
+        segTree = new long[max_size+1];
         recurr(1,arr.length,1);
         return segTree;
     }
@@ -75,13 +82,15 @@ class SegmentTree{
         }
     }
 
-    public int query(int left,int right, int qleft,int qright, int ind) {
-         if (left == qleft&&right==qright) {
-             int result = segTree[ind];
+    public long query(int l, int r){
+        return query(0,arr.length-1,l,r,1);
+    }
 
-            return result;
+    private long query(int left,int right, int qleft,int qright, int ind) {
+         if (left == qleft&&right==qright) {
+             return segTree[ind];
         } else {
-            int sum1=0, sum2=0;
+            long sum1=0, sum2=0;
             int mid = left + (right - left) / 2;
             int lchild = ind<<1;
             int rchild = lchild+1;
