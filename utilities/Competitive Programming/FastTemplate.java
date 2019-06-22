@@ -4,19 +4,14 @@
  *
  * */
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.InputStreamReader;
-import java.io.DataInputStream;
-import java.io.FileInputStream;
-import java.io.IOException;
+import java.io.*;
 import java.util.*;
 
 class FastTemplate {
     static Reader br;
     public static void main(String[] args) throws Exception{
         try {
-            br=new Reader("G:\\Warehouse\\custom.txt");
+            br=new Reader("G:\\Workspace\\codechef\\custom.txt");
         } catch (Exception e) {
             br=new Reader();
         }
@@ -32,21 +27,51 @@ class FastTemplate {
     }
 
 
-    /* HELPER FUNCTIONS CREATED BY GANESH PATRA ON 05 March,2019*/
-    private static int ri() throws Exception{           return br.nextInt(); }
-    private static int ri(String s){                    return Integer.parseInt(s);             }
-    private static String rs() throws Exception{        return br.readLine();                   }
-    private static String[] rss() throws Exception{     return br.readLine().split(" ");   }
-    private static void pf(Object ob){ System.out.print(ob); }
-    private static void pfn(Object ob){System.out.println(ob); }
+
+
+
+
+
+
+
+    // Helper functions template from :-
+    // https://github.com/92ganesh/Algo-and-Utilites/edit/master/utilities/Competitive%20Programming/FastTemplate.java
+    public static int MOD = (int)1e9+7;
+    private static int ri() throws Exception{           return Integer.parseInt(br.readLine().trim());}
+    private static long rl() throws Exception{          return Long.parseLong(br.readLine().trim());}
+    private static int ri(String s){                    return Integer.parseInt(s);}
+    private static long rl(String s){                   return Long.parseLong(s);}
+    private static String rs() throws Exception{        return br.readLine();}
+    private static String[] rss() throws Exception{     return br.readLine().trim().split("\\s+");}
+    private static void pf(Object ob){ System.out.print(ob);}
+    private static void pfn(Object ob){System.out.println(ob);}
+    private static void pfn(){System.out.println();}
     private static void pfn(int[] arr){
-        for(int i=0;i<arr.length;i++){  System.out.print(arr[i]+" ");   }
-        System.out.println();
+        StringBuilder temp = new StringBuilder();
+        for(int i=0;i<arr.length;i++){  temp.append(arr[i]).append(' ');}
+        System.out.println(temp);
     }
+    private static void pfn(long[] arr){
+        StringBuilder temp = new StringBuilder();
+        for(int i=0;i<arr.length;i++){  temp.append(arr[i]).append(' ');  }
+        System.out.println(temp);
+    }
+    static int debug=0;
+    private static void df(Object ob){ if(debug==1) System.out.print(ob); }
+    private static void dfn(Object ob){ if(debug==1) System.out.println(ob); }
+    private static void dfn(){ if(debug==1) System.out.println(); }
+    private static void dfn(int[] arr){
+        if(debug==1) {
+            StringBuilder temp = new StringBuilder();
+            for(int i=0;i<arr.length;i++){  temp.append(arr[i]).append(' ');  }
+            System.out.println(temp);
+        }
+    }
+
 
     //**************************************************************************
     /*
-     * FAST READER copied from www.geeksforgeeks.org
+     * FAST READER referred from www.geeksforgeeks.org
      * https://www.geeksforgeeks.org/fast-io-in-java-in-competitive-programming/
      * */
     static class Reader
