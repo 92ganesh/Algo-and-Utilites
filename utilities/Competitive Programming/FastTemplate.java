@@ -1,7 +1,9 @@
 /*
- * FAST READER is used from www.geeksforgeeks.org
- * refer at https://www.geeksforgeeks.org/fast-io-in-java-in-competitive-programming/
+ * 1) FAST READER is used from www.geeksforgeeks.org
+ *    refer at https://www.geeksforgeeks.org/fast-io-in-java-in-competitive-programming/
  *
+ * 2) Helper functions template from :-
+ *    https://github.com/92ganesh/Algo-and-Utilites/edit/master/utilities/Competitive%20Programming/FastTemplate.java
  * */
 
 import java.io.*;
