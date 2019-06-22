@@ -27,7 +27,8 @@ class template {
 
 
 
-    //****************  Helper functions template from  ******************
+    //Helper functions template from :- 
+    //https://github.com/92ganesh/Algo-and-Utilites/blob/master/utilities/Competitive%20Programming/template.java
     public static int MOD = (int)1e9+7;
     private static int ri() throws Exception{           return Integer.parseInt(br.readLine().trim());}
     private static long rl() throws Exception{          return Long.parseLong(br.readLine().trim());}
