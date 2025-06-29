@@ -84,11 +84,17 @@ class Toposort_BFS {
         }
 
         //cycle detection
+        if(topoInd != V-1){
+            System.out.println("All vertices are not added to toposort means cycle exists hence cannot generate toposort");
+        }
+
+        /*Alternate way to check cycle. If any indegree is still not 0 after processing then cycle exists
         for(int i=0;i<indegrees.length;i++){
-            if(indegrees[i]==0) {
+            if(indegrees[i]!=0) {
                 System.out.println("cycle exists hence cannot generate toposort");
             }
         }
+        */
 
         return topoSorted;
     }
